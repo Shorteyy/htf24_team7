@@ -129,7 +129,7 @@ view: planet {
     type: number
     sql: ROUND(SUM(CASE WHEN ${habitability_score} THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) ;;
     description: "Percentage of habitable planets out of all found planets."
-    value_format: "0.00%" # Ensures the result is displayed as a percentage like 0.70%
+    value_format: ".00%" # Ensures the result is displayed as a percentage like 0.70%
   }
 
   measure: count {
