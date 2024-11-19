@@ -23,6 +23,11 @@ explore: planet {
     relationship: many_to_one
   }
 
+  join: star{
+    sql_on: ${planet.host_id} = ${star.host_id} ;;
+    relationship: many_to_one
+  }
+
   # Join the discovery_telescope view through discovery_facility
   join: discovery_telescope {
     sql_on: ${discovery_facility.facility_id} = ${discovery_telescope.facility_id} ;;
