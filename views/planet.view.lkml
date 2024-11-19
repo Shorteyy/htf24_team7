@@ -111,10 +111,6 @@ view: planet {
     type: number
     sql: ${TABLE}.v_johnson_magnitude ;;
   }
-  measure: count {
-    type: count
-    drill_fields: [planet_id, planet_name]
-  }
   dimension: habitability_score {
     type: yesno
     sql: CASE
@@ -126,6 +122,19 @@ view: planet {
       THEN TRUE
       ELSE FALSE
     END ;;
+  }
+
+# New Measure: Percent of Habitable Planets
+  measure: percent_habitable_planets {
+    type: number
+    sql: ROUND(SUM(CASE WHEN ${habitability_score} THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) ;;
+    description: "Percentage of habitable planets out of all found planets."
+    value_format: "0.00%"
+  }
+
+  measure: count {
+    type: count
+    drill_fields: [planet_id, planet_name]
   }
 
   dimension: is_temperature_habitable {
