@@ -119,6 +119,7 @@ view: planet {
        AND ${equilibrium_temperature_k} BETWEEN 175 AND 274
        AND ${eccentricity} < 0.2
        AND ${insolation_flux_earth} BETWEEN 0.7 AND 1.3
+       AND ${planet_density} > 1
       THEN TRUE
       ELSE FALSE
     END ;;
