@@ -11,4 +11,6 @@ explore: raw_planets {}
 
 explore: star {}
 
-explore: planet {}
+explore: planet {
+  label: "Explore Planets"
+}
